@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config: #配置git配置文件的信息
+      server:
+        git:
+          uri: https://github.com/13413527259/spring_cloud_config_demo
+server:
+  port: 8400
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

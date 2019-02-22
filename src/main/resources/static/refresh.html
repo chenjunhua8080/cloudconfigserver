@@ -1,0 +1,21 @@
+<html>
+<body>
+<span id="info"></span>
+</body>
+</html>
+<script src="jquery-2.1.0.min.js"></script>
+<script>
+var info="正在刷新配置";
+function writeInfo(){
+	info+=".";
+	$('#info').html(info);
+}
+var refreshing=setInterval("writeInfo()",200);
+//jQuery.post( url, [data], [callback], [type] )
+$.post(
+	'http://192.0.0.234:8400/actuator/bus-refresh',
+	function(result){
+		setTimeout(function(){ window.clearInterval(refreshing);$('#info').html("刷新完成！");}, 3000);
+	}
+);
+</script>
